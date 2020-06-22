@@ -14,4 +14,4 @@ def generate():
     for i in range(extension):
         new_address += choice(valores)
 
-    print(new_address)
+    return new_address
