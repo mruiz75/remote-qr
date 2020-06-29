@@ -1,5 +1,6 @@
 import socket
 from _thread import start_new_thread
+from threading import Thread
 
 import MAC_generator
 import manejo_nodos as mn
@@ -37,16 +38,20 @@ class MeshPrincipal:
         nodoCliente = self.crear_nodo_registro(direccion)
         string_datos = nodoCliente.to_string()
         codificacion = 'utf-8'
-
         for nodo in self.nodosConectados.get_lista():
-            conexion = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            conexion.connect((nodo.get_ip(), nodo.get_puerto()))
-            conexion.send(string_datos.encode(codificacion))
-            conexion.close()
-        cliente.send(nodoCliente.get_mac().encode(codificacion))
+            try:
+                conexion = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                conexion.connect((nodo.get_ip(), nodo.get_puerto()))
+                conexion.send(('NEWNODE ' + string_datos).encode(codificacion))
+                conexion.close()
+            except:
+                pass
+        cliente.send(nodoCliente.to_string().encode(codificacion))
         cliente.send(self.datosNodo.to_string().encode(codificacion))
         cliente.send(self.nodosConectados.to_string().encode(codificacion))
+        cliente.close()
         self.nodosConectados.agregar_nodo(nodoCliente)
+        print("Agregado el nodo %s:%s" % (nodoCliente.get_ip(), str(nodoCliente.get_puerto())))
 
 
     def registro(self):
@@ -56,14 +61,18 @@ class MeshPrincipal:
         # Creamos el servidor.
         # socket.AF_INET para indicar que utilizaremos Ipv4
         # socket.SOCK_STREAM para utilizar TCP/IP (no udp)
-        socketServidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socketServidor.bind(dataConection)
-        socketServidor.listen()
+        socketRegistro = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socketRegistro.bind(dataConection)
+        socketRegistro.listen()
         print("Esperando conexiones en %s:%s" % (self.datosNodo.get_ip(), self.datosNodo.get_puerto()))
 
         while True:
-            cliente, direccion = socketServidor.accept()
+            cliente, direccion = socketRegistro.accept()
             print("Conexion establecida con %s:%s" % (direccion[0], direccion[1]))
+            hilo_nuevo_registro = Thread(target=self.agregar_cliente, args=(cliente
+                                                                            , direccion))
+            hilo_nuevo_registro.start()
+            hilo_nuevo_registro.join()
 
 
 
@@ -74,7 +83,8 @@ if __name__ == "__main__":
     #print(p.get_mac())
     #print(p.get_puerto())
 
-    p = mesh.agregar_cliente(0, ['0.0.0.0', 1616])
+    #p = mesh.agregar_cliente(0, ['0.0.0.0', 1616])
+    mesh.registro()
 
 '''
 ip = "0.0.0.0"
