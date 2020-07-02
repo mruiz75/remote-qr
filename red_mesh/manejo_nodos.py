@@ -1,3 +1,4 @@
+#Clase que alberga los datos de un nodo de la red
 class CrearNodo:
 
     def __init__(self, ip, mac, puerto):
@@ -18,6 +19,7 @@ class CrearNodo:
     def get_puerto(self):
         return self.puerto
 
+#Clase que contiene los datos de todos los nodos activos de la red mesh
 class ListaNodos:
 
     def __init__(self):
@@ -36,6 +38,8 @@ class ListaNodos:
         else:
             return -1
 
+    def eliminar_nodo(self, indiceNodo):
+        return self.listaNodos.pop(indiceNodo)
 
     def to_string(self):
         string_nodos = ''
@@ -53,17 +57,3 @@ class ListaNodos:
 
     def get_lista(self):
         return self.listaNodos
-
-'''
-nodo = CrearNodo('12', 'as', 34)
-nodo2 = CrearNodo('13', 'hola', 35)
-lista = ListaNodos()
-lista.agregar_nodo(nodo)
-lista.agregar_nodo(nodo2)
-print(lista.get_lista()[1].get_ip())
-str_prueba = lista.to_string()
-print(str_prueba)
-lista2 = ListaNodos()
-lista2.to_list(str_prueba)
-print(lista2.get_lista()[1].get_ip())
-'''

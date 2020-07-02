@@ -4,8 +4,8 @@ import random
 
 import manejo_nodos
 import paquete_mesh
-import argparse
 
+#Clase que representa cada cliente de la red mesh
 class NodoMesh:
 
     def __init__(self, ipServidor, puertoServidor):
@@ -13,6 +13,7 @@ class NodoMesh:
         datosConexion = (ipServidor, puertoServidor)
         socketRegistro = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socketRegistro.connect(datosConexion)
+        socketRegistro.send('CONNECT'.encode('utf-8'))
         print("Registrando con el servidor ---> %s:%s" % datosConexion)
         datos = socketRegistro.recv(2048).decode('utf-8')
 
@@ -25,12 +26,14 @@ class NodoMesh:
                                                                                      listaVecinos)
         if datosNodo:
             print("Registro Exitoso, su id es: " + self.nodoDatos.get_mac())
+            print()
+            print('----- Indicaciones --------')
+            print('Formato para enviar un mensaje: "Para" [mac_destino] [mensaje]')
+            print('Para salir utilizar la palabra "Salir"\n')
         else:
             print("Ocurrio un error en el registro")
-        #print(self.nodoDatos.get_puerto())
-        #print(self.nodoRegistro.get_puerto())
-        #print(self.listaVecinos.get_lista())
 
+    #Funcion que guarda todos los datos propios dentro de la red mesh
     def guardar_registro(self, datosNodo, datosRegistro, listaVecinos):
         nodoDatos = manejo_nodos.CrearNodo(datosNodo[0], datosNodo[1], int(datosNodo[2]))
         nodoRegistro = manejo_nodos.CrearNodo(datosRegistro[0], datosRegistro[1], int(datosRegistro[2]))
@@ -38,6 +41,8 @@ class NodoMesh:
         vecinos.to_list(listaVecinos)
         return nodoDatos, nodoRegistro, vecinos
 
+    #Funcion que esta escuchando a la espera de acciones realizadas por los otros clientes
+    # de la red
     def solicitudes(self):
 
         socketEscucha = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -48,33 +53,42 @@ class NodoMesh:
             cliente, direccion = socketEscucha.accept()
             datosSolicitud = cliente.recv(2048).decode('utf-8')
             cliente.close()
-            solicitud = Thread(target=self.trabajar_solicitud, args=(datosSolicitud,))
-            solicitud.start()
-            solicitud.join()
+            datosSolicitud = datosSolicitud.split()
+            if datosSolicitud[0] == 'DEL' and datosSolicitud[1] == self.nodoDatos.get_mac():
+                break
+            else:
+                solicitud = Thread(target=self.trabajar_solicitud, args=(datosSolicitud,))
+                solicitud.start()
+                solicitud.join()
 
+    #Funcion que ejecuta la accion que se le solicito al nodo
     def trabajar_solicitud(self, datos):
-        datos = datos.split()
         if datos[0] == 'NEWNODE':
             self.agregar_vecino(datos[1:])
-            print("Agregado nuevo vecino: " + datos[2])
+            print("\nAgregado nuevo vecino: " + datos[2] + '\n')
         elif datos[0] == 'RV':
-            print("\n Redireccionando paquete \n")
+            print("\nRedireccionando paquete \n")
             self.reenviar_paquete(datos)
         elif datos[0] == 'MSJ':
-            print('\n RECIBIDO: ' + " ".join(datos[1:]) + '\n')
+            print('\nRECIBIDO: ' + " ".join(datos[1:]) + '\n')
+        elif datos[0] == 'DEL':
+            indiceVecino = self.listaVecinos.buscar_nodo(datos[1])
+            vecinoEliminado = self.listaVecinos.eliminar_nodo(indiceVecino)
+            print("\nEl vecino %s se desconecto.\n" %vecinoEliminado.get_mac())
         else:
             pass
+        print(self.nodoDatos.get_mac() + '# ')
 
-
+    #Funcion que agrega algun cliente que se acabe de conectar a la red
     def agregar_vecino(self, datosVecino):
         nodoVecino = manejo_nodos.CrearNodo(datosVecino[0], datosVecino[1], int(datosVecino[2]))
         self.listaVecinos.agregar_nodo(nodoVecino)
 
+    #Funcion que reenvia el paquete quitandole quien lo envio
     def reenviar_paquete(self, paquete):
         ipDestino = paquete[1]
         puertoDestino = int(paquete[2])
         mensajeNuevo = " ".join(paquete[3:])
-        #print(mensajeNuevo)
 
         try:
             cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -82,8 +96,9 @@ class NodoMesh:
             cliente.send(mensajeNuevo.encode('utf-8'))
             cliente.close()
         except:
-            print("Fallo al enviar un mensaje")
+            print("Fallo al reenviar un mensaje")
 
+    #Funcion que crea un camino aleatorio por el que pasara el paquete sin seguimiento
     def generar_ruta_aleatoria(self, macDestino):
         posDestino = self.listaVecinos.buscar_nodo(macDestino)
         cantidadNodos = len(self.listaVecinos.get_lista())
@@ -105,6 +120,7 @@ class NodoMesh:
             ruta.append(posDestino)
         return ruta
 
+    #Funcion que encapsula el paquete que se enviara
     def crear_paquete(self, ruta, mensaje):
         nodos = len(ruta) - 1
 
@@ -119,6 +135,7 @@ class NodoMesh:
 
         return paquete
 
+    #Funcion que hace el proceso de preparar los datos para el envio
     def crear_ruta(self, macDestino, mensaje):
         paquete = None
 
@@ -138,13 +155,25 @@ class NodoMesh:
 
         return paquete
 
+    #Funcion que desconecta al cliente de la red mesh
+    def desconetar(self):
+        try:
+            servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            servidor.connect((self.nodoRegistro.get_ip(), self.nodoRegistro.get_puerto()))
+            servidor.send(('DEl ' + self.nodoDatos.get_mac()).encode('utf-8'))
+            servidor.close()
+        except:
+            print("Fallo al desconectar en el servidor")
+
+    #Funcion que habilita el envio de mensajes al usuario
     def enviar_mensaje(self):
         activo = True
 
         while activo:
             mensaje = input(self.nodoDatos.get_mac() + '# ')
             if mensaje.lower() == 'salir':
-                activo = False
+                self.desconetar()
+                break
             else:
                 mensaje = mensaje.split()
                 if len(mensaje) < 3:
@@ -158,11 +187,11 @@ class NodoMesh:
                 else:
                     paquete = self.crear_ruta(mensaje[1], " ".join(mensaje[2:]))
                     if paquete:
-                        #print(paquete)
                         paquete = paquete.split()
-                        #print(paquete)
                         self.reenviar_paquete(paquete)
 
+    #Funcion que activa tanto la parte de escucha el nodo como la parte de aplicacion y uso
+    # del cliente
     def main(self):
         hilo_solicitudes = Thread(target=self.solicitudes)
         hilo_solicitudes.start()
@@ -179,44 +208,3 @@ class NodoMesh:
 if __name__ == "__main__":
     cliente = NodoMesh('127.0.0.1', 1505)
     cliente.main()
-
-
-    #parametros = datos()
-    #print(parametros.ip)
-
-
-'''
-#declaramos las variables
-ipServidor = "127.0.0.1" #es lo mismo que "localhost" o "0.0.0.0"
-puertoServidor = 1505
-
-#Configuramos los datos para conectarnos con el servidor
-#socket.AF_INET para indicar que utilizaremos Ipv4
-#socket.SOCK_STREAM para utilizar TCP/IP (no udp)
-#Estos protocolos deben ser los mismos en el principal
-def nose():
-    cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    cliente.connect((ipServidor, puertoServidor))
-    print("Conectado con el servidor ---> %s:%s" %(ipServidor, puertoServidor))
-
-    #Bucle de escucha. En él indicamos la forma de actuar al recibir las tramas del cliente
-    while True:
-        msg = input("> ")
-        cliente.send(msg.encode('utf-8'))
-        respuesta = cliente.recv(4096).decode('utf-8')
-        print(respuesta)
-        if respuesta == "exit":
-            break;
-
-    print("------- CONEXIÓN CERRADA ---------")
-    cliente.close()
-
-def datos():
-    parser = argparse.ArgumentParser(description='IP y puerto del servidor a conectar')
-    parser.add_argument('ip', help='Server ip')
-    parser.add_argument('p', help='Server port')
-
-    args = parser.parse_args()
-
-    return args
-'''

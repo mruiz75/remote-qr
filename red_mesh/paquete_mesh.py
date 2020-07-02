@@ -1,3 +1,4 @@
+#Clase que representa el paquete que se envia por la red mesh
 class Paquete:
 
     def __init__(self, ipDestino, puertoDestino, mensaje):
@@ -14,9 +15,3 @@ class Paquete:
                             self.mensaje.to_string()
 
         return stringPaquete
-
-
-'''
-pa = Paquete('12', '13', Paquete('14', '15', 'hola'))
-print(pa.to_string())
-'''
