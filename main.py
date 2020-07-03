@@ -1,8 +1,16 @@
 import capa1.generador_trama
-from capa1.generador_qr import texto_a_qr
+from capa1.generador_qr import *
+from capa1.interpretador_qr import *
 
 def main():
-    texto = "hola fjdklsafjdksal;f jdskaf ;dsajfkdl ;asjfkds aljfkdsla fjdksa fjdskafhdsjkhfdjs akfhdsakf dhsajf kdhsajf kdahsfj kdahfjd ksafhjdksa fhdjksa fhdsjak fds fhdskjahf djsahfj dsahfj dsahfjdksahfdjskaf hajk rhejwkhfdjskf hdjsaklfdhsjakfl ahjrkel sfhjdsakfhdjsakf rhejk fhdsjkf dhsja faksd"
-    texto_a_qr(texto)
+    version = "01"
+    ip = "192.168.112.011"
+    mac = "F8FFDDEEAA00"
+    filename = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/capa1/texto1.txt"
+    #texto_a_qr(version, ip, mac, filename)
+    file_a_qr(version, ip, mac, filename)
+
+    #leer_png()
+    leer_qr()
 
 main()
