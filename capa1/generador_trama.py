@@ -1,52 +1,59 @@
 #!/usr/bin/python
+import sys
 
-def crear_trama(version, id, ip0, ipf, mac, payload):
+def crear_trama(version, cont, ip, mac, payload):
     trama = b''
 
-    header = armar_header(version, id, ip0, ipf, mac)
+    header = armar_header(version, cont, ip, mac)
     trama += header
-    trama += armar_payload(payload)
+    len_header = sys.getsizeof(trama)
+    trama, payload_restante = armar_payload(trama, payload)
+    #trama += payload_usado
+    print(sys.getsizeof(trama))
 
-    return trama
+    return trama, payload_restante
 
-def armar_header(version, id, ip0, ipf, mac):
+
+def armar_header(version, cont, ip, mac):
     header = b''
 
-    version_bin = bytes([version])
-    id_bin = bytes([id])
-    ip0_bin = ip0.encode('utf-8')
-    ipf_bin = ipf.encode('utf-8')
-    mac_bin = mac.encode('utf-8')
+    version_b = (version + "|").encode('utf-8')
+    cont_b = (cont + "|").encode('utf-8')
+    ip_b = (ip + "|").encode('utf-8')
+    mac_b = (mac +"|").encode('utf-8')
 
-    header += version_bin
-    header += id_bin
-    header += ip0_bin
-    header += ipf_bin
-    header += mac_bin
+    header += version_b
+    header += cont_b
+    header += ip_b
+    header += mac_b
 
     return header
 
+
 def calcular_checksum(payload):
+    payload = payload.decode()
     divisor = 24
     sum = 0
 
     for i in payload:
         sum += ord(i)
 
-    checksum = bytes([sum % divisor])
-    return checksum
+    checksum = sum % divisor
+    return str(checksum)
 
-def armar_payload(payload):
-    b_payload = b''
-    result = b''
 
-    checksum = calcular_checksum(payload)
-    result += checksum
+def armar_payload(trama, payload):
+    payload_procesado = b''
 
-    # convertir payload a bytes
-    for letter in payload:
-        b_payload += bytes(letter, encoding='utf-8')
+    while(sys.getsizeof(trama) < 125 and len(payload) > 0):
+        trama += bytes([payload[0]])
+        payload_procesado += bytes([payload[0]])
+        payload = payload[1:]
 
-    result += b_payload
+    trama += "|".encode()
 
-    return result
+    checksum = calcular_checksum(payload_procesado)
+    trama += (checksum).encode('utf-8')
+
+
+    return trama, payload

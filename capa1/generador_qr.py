@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from capa1.generador_trama import crear_trama
+import sys
 import qrcode
 import time
 import numpy as np
@@ -10,41 +11,39 @@ from PIL import Image
 from bitstring import BitArray
 from matplotlib.pyplot import imshow
 
-VERSION_PROTOCOLO = 1
 
-def file_a_qr():
-    pass
+def file_a_qr(version, ip, mac, filename):
+    with open(filename, "rb") as file:
+        data = file.read()
 
-def texto_a_qr(texto):
+    texto_a_qr(version, ip, mac, data)
+
+
+def texto_a_qr(version, ip, mac, texto):
     lista_tramas = []
-    max_len = 111
-    id1 = 0
-    ip_salida = "192.168.0.1"
-    ip_final = "199.123.2.1"
-    mac1 = "F8:FF:FF:FF:FF:FF"
+    cont = "0"
+    if isinstance(texto, str):
+        texto = texto.encode()
 
     while(len(texto) > 0):
-        len_texto = len(texto)
-        if(len_texto < 111):
-            max_len = len_texto
-
-        subtexto = texto[0:max_len]
-        trama = crear_trama(version=VERSION_PROTOCOLO,
-                            id=id1,
-                            ip0=ip_salida,
-                            ipf=ip_final,
-                            mac=mac1,
-                            payload=subtexto)
+        trama, subtexto = crear_trama(version=version,
+                            cont=cont,
+                            ip=ip,
+                            mac=mac,
+                            payload=texto)
         lista_tramas.append(trama)
-        id1 += 1
-        texto = texto[max_len:]
+        cont = str(int(cont) + 1)
+        texto = subtexto
 
+    lista_tramas.append("F".encode())
     qr(lista_tramas)
     return
+
 
 def qr(tramas):
 
     for i in range(len(tramas)):
+        # print(sys.getsizeof(tramas[i]))
         qr = qrcode.QRCode(
             version = 1,
             box_size = 15,
@@ -63,6 +62,6 @@ def qr(tramas):
 
         plt.imshow(qr_image, cmap='gray', vmin=0, vmax=255)
         plt.draw()
-        plt.pause(3)
+        plt.pause(0.5)
         plt.close()
 
