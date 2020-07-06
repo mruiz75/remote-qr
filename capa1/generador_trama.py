@@ -31,12 +31,13 @@ def armar_header(version, cont, ip, mac):
 
 
 def calcular_checksum(payload):
-    payload = payload.decode()
+    #payload = payload.decode()
     divisor = 24
     sum = 0
 
     for i in payload:
-        sum += ord(i)
+        #sum += ord(i)
+        sum += i
 
     checksum = sum % divisor
     return str(checksum)

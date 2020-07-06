@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 from capa1.generador_trama import crear_trama
 import sys
 import qrcode
@@ -35,7 +36,14 @@ def texto_a_qr(version, ip, mac, texto):
         cont = str(int(cont) + 1)
         texto = subtexto
 
-    lista_tramas.append("F".encode())
+        if len(texto) == 0:
+            trama, subtexto = crear_trama(version=version,
+                                          cont="F",
+                                          ip=ip,
+                                          mac=mac,
+                                          payload=" ".encode())
+            lista_tramas.append(trama)
+
     qr(lista_tramas)
     return
 
@@ -62,6 +70,6 @@ def qr(tramas):
 
         plt.imshow(qr_image, cmap='gray', vmin=0, vmax=255)
         plt.draw()
-        plt.pause(0.5)
+        plt.pause(0.2)
         plt.close()
 
