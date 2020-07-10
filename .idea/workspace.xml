@@ -3,14 +3,233 @@
   <component name="ChangeListManager">
     <list default="true" id="7dc5f337-1d03-4d69-97e2-281d9ceda04d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capa1/generador_qr.py" beforeDir="false" afterPath="$PROJECT_DIR$/capa1/generador_qr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capa1/generador_trama.py" beforeDir="false" afterPath="$PROJECT_DIR$/capa1/generador_trama.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/capa1/interpretador_qr.py" beforeDir="false" afterPath="$PROJECT_DIR$/capa1/interpretador_qr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr0.png" beforeDir="false" afterPath="$PROJECT_DIR$/qr0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr1.png" beforeDir="false" afterPath="$PROJECT_DIR$/qr1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr8.png" beforeDir="false" afterPath="$PROJECT_DIR$/qr8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfile" beforeDir="false" afterPath="$PROJECT_DIR$/tempfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000000.png" beforeDir="false" afterPath="$PROJECT_DIR$/tempfolder/qr0000000000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000001.png" beforeDir="false" afterPath="$PROJECT_DIR$/tempfolder/qr0000000001.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000002.png" beforeDir="false" afterPath="$PROJECT_DIR$/tempfolder/qr0000000002.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000003.png" beforeDir="false" afterPath="$PROJECT_DIR$/tempfolder/qr0000000003.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000004.png" beforeDir="false" afterPath="$PROJECT_DIR$/tempfolder/qr0000000004.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000022.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000028.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000029.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000030.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000031.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000032.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000034.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000036.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000037.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000038.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000039.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000040.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000041.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000043.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000044.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000045.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000046.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000047.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000048.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000049.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000050.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000051.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000052.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000053.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000054.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000055.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000056.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000057.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000058.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000059.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000060.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000061.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000062.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000063.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000064.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000065.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000066.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000067.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000068.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000069.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000070.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000071.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000072.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000073.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000074.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000075.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000076.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000077.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000078.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000079.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000080.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000081.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000082.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000083.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000084.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000085.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000086.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000087.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000088.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000089.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000090.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000091.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000092.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000093.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000094.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000095.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000096.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000097.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000098.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000099.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000101.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000102.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000103.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000104.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000105.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000106.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000107.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000108.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000109.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000110.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000111.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000112.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000113.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000114.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000115.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000116.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000117.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000118.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000119.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000120.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000121.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000122.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000123.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000124.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000125.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000126.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000127.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000129.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000130.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000131.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000132.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000133.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000134.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000135.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000136.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000137.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000138.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000139.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000140.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000141.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000142.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000143.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000144.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000145.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000146.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000147.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000148.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000149.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000150.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000151.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000152.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000153.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000154.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000155.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000156.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000157.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000158.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000159.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000160.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000161.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000162.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000163.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000164.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000165.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000166.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000167.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000168.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000169.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000170.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000171.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000172.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000173.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000174.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000175.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000176.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000177.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000178.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000179.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000180.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000181.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000182.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000183.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000184.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000185.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000186.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000187.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000188.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000189.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000190.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000191.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000193.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000194.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000195.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000196.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000197.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000198.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000199.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000201.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000202.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000203.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000204.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000205.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000206.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000207.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000208.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000209.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000210.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000211.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000212.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000213.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000214.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000215.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000216.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000217.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000218.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000219.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000220.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000221.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000222.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempfolder/qr0000000223.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,8 +243,8 @@
       <file leaf-file-name="generador_trama.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/capa1/generador_trama.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="44">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -33,11 +252,8 @@
       <file leaf-file-name="generador_qr.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/capa1/generador_qr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-              <folding>
-                <element signature="e#18#63#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-425">
+              <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -45,8 +261,8 @@
       <file leaf-file-name="interpretador_qr.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/capa1/interpretador_qr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="2085">
+              <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
               <folding>
                 <element signature="e#19#29#0" expanded="true" />
               </folding>
@@ -57,8 +273,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+            <state relative-caret-position="330">
+              <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -77,7 +293,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>prin</find>
       <find>print</find>
+      <find>encode</find>
+      <find>2:</find>
+      <find>cont</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,7 +314,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1280" />
     <option name="y" value="23" />
     <option name="width" value="1920" />
@@ -194,25 +414,35 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1920" height="1177" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11374407" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962963" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.64444447" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32962963" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32962963" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25833333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962963" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.225" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24814814" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.225" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17156473" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32962963" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32962963" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3537037" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962963" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32962963" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -220,18 +450,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/capa1/interpretador_qr.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="43" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>decodedObs[0].data</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>obj.data.decode()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>datos[&quot;version&quot;]</expression-string>
         <language-id>Python</language-id>
@@ -265,6 +498,103 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/capa1/generador_qr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/generador_trama.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/generador_qr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/main.py" />
+    <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/matplotlib/axes/_axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2098">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/generador_trama.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/interpretador_qr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="58" column="28" lean-forward="true" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+          <folding>
+            <element signature="e#19#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/generador_qr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="33" column="34" lean-forward="true" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/generador_trama.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/generador_qr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capa1/interpretador_qr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding>
+            <element signature="e#19#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/capa1/generador_trama.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -276,9 +606,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -313,9 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -350,9 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -397,9 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -414,9 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -442,9 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
           <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -459,9 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -487,9 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
           <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -504,9 +810,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -518,60 +821,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/red_mesh/manejo_nodos.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/red_mesh/MAC_generator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/red_mesh/mesh_principal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/red_mesh/nodo_mesh.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/qrcode/image/pil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="551">
+          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/red_mesh/paquete_mesh.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/obtener_ip.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/capa1/generador_trama.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="44">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/capa1/generador_qr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-          <folding>
-            <element signature="e#18#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-425">
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/capa1/interpretador_qr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        <state relative-caret-position="2085">
+          <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
           <folding>
             <element signature="e#19#29#0" expanded="true" />
           </folding>
@@ -580,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        <state relative-caret-position="330">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

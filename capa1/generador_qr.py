@@ -7,41 +7,38 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mp_img
+import os
 
 from PIL import Image
 from bitstring import BitArray
 from matplotlib.pyplot import imshow
 
-
-def file_a_qr(version, ip, mac, filename):
+#recibe ints
+def file_a_qr(version, mac, filename):
     with open(filename, "rb") as file:
-        data = file.read()
+        hexdata = file.read().hex()
 
-    texto_a_qr(version, ip, mac, data)
+    texto_a_qr(version, mac, hexdata)
 
 
-def texto_a_qr(version, ip, mac, texto):
+def texto_a_qr(version, mac, texto_hex):
     lista_tramas = []
-    cont = "0"
-    if isinstance(texto, str):
-        texto = texto.encode()
+    cont = 0
 
-    while(len(texto) > 0):
+    while(len(texto_hex) > 0):
         trama, subtexto = crear_trama(version=version,
                             cont=cont,
-                            ip=ip,
                             mac=mac,
-                            payload=texto)
+                            payload=texto_hex)
         lista_tramas.append(trama)
-        cont = str(int(cont) + 1)
-        texto = subtexto
+        cont = int(cont) + 1
+        texto_hex = subtexto
 
-        if len(texto) == 0:
-            trama, subtexto = crear_trama(version=version,
-                                          cont="F",
-                                          ip=ip,
+        if len(texto_hex) == 0:
+            trama, subtexto = crear_trama(version=0,
+                                          cont=cont,
                                           mac=mac,
-                                          payload=" ".encode())
+                                          payload=" ")
             lista_tramas.append(trama)
 
     qr(lista_tramas)
@@ -62,7 +59,16 @@ def qr(tramas):
         qr.make(fit = True)
 
         img = qr.make_image()
-        name = "qr{}.png".format(i)
+
+        try:
+            directorio_actual = os.getcwd()
+            directorio_final = os.path.join(directorio_actual, r'tempfolder')
+            if not os.path.exists(directorio_final):
+                os.makedirs(directorio_final)
+        except OSError:
+            print("Creation of the directory %s failed" % path)
+
+        name = generar_nombre_archivo(i)
         img.save(name)
 
         unformatted_qr_image = Image.open(name).convert("L")
@@ -70,6 +76,12 @@ def qr(tramas):
 
         plt.imshow(qr_image, cmap='gray', vmin=0, vmax=255)
         plt.draw()
-        plt.pause(0.2)
+        plt.pause(0.1)
         plt.close()
 
+
+def generar_nombre_archivo(cont):
+    nombre = "tempfolder/qr"
+    ceros = 10 - len(str(cont))
+    nombre = nombre + "0"*ceros + str(cont) + ".png"
+    return nombre
