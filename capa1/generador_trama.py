@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 import sys
 
 def crear_trama(version, cont, mac, payload):

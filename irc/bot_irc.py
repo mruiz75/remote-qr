@@ -15,6 +15,7 @@ class BotIRC:
         print(self.conexionIRC.conexion_servidor(self.host, self.puerto, self.nick, self.realName,
                                            self.canal))
 
+
     #Funcion que esta leyendo constantemente mensajes que llegen al canal del IRC
     def buzon(self):
         while True:
@@ -23,6 +24,7 @@ class BotIRC:
                 mensaje = mensaje.split('PRIVMSG', 1)[1]
                 print(mensaje)
                 print(self.canal + ': ')
+
 
     #Funcion que da el espacio para que el cliente le diga al bot que mensaje desea enviar al canal
     def terminal_usuario(self):
@@ -35,6 +37,7 @@ class BotIRC:
             else:
                 print('Cerrando sesion')
                 break
+
 
     #Funcion que activa el bot para ser utilizado
     def activar(self):
