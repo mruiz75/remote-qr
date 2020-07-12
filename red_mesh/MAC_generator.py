@@ -4,8 +4,7 @@ Utilidad para generar las direcciones MAC necesarias en las conexiones
 from random import choice
 class MACGenerator:
     def __init__(self):
-        self.valores = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-           'A', 'B', 'C', 'D', 'E', 'F']
+        self.valores = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
         self.extension = 10
 
     def generate(self):

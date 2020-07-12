@@ -1,4 +1,4 @@
-import utilidades_IRC as UIRC
+import irc.utilidades_IRC as UIRC
 from threading import Thread
 import argparse
 
@@ -15,6 +15,7 @@ class BotIRC:
         print(self.conexionIRC.conexion_servidor(self.host, self.puerto, self.nick, self.realName,
                                            self.canal))
 
+
     #Funcion que esta leyendo constantemente mensajes que llegen al canal del IRC
     def buzon(self):
         while True:
@@ -23,6 +24,7 @@ class BotIRC:
                 mensaje = mensaje.split('PRIVMSG', 1)[1]
                 print(mensaje)
                 print(self.canal + ': ')
+
 
     #Funcion que da el espacio para que el cliente le diga al bot que mensaje desea enviar al canal
     def terminal_usuario(self):
@@ -36,6 +38,7 @@ class BotIRC:
                 print('Cerrando sesion')
                 break
 
+
     #Funcion que activa el bot para ser utilizado
     def activar(self):
         hilo_buzon = Thread(target=self.buzon)
@@ -47,10 +50,10 @@ class BotIRC:
         hilo_buzon.join()
         hilo_usuario.join()
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Ingresos de datos para el IRC')
-    parser.add_argument('nick', help='El Nick user del IRC')
-    parser.add_argument('realName', help='El nombre real para el uso del IRC')
-    args = parser.parse_args()
-    bot = BotIRC(args.nick, args.realName)
-    bot.activar()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description='Ingresos de datos para el IRC')
+#     parser.add_argument('nick', help='El Nick user del IRC')
+#     parser.add_argument('realName', help='El nombre real para el uso del IRC')
+#     args = parser.parse_args()
+#     bot = BotIRC(args.nick, args.realName)
+#     bot.activar()

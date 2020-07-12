@@ -14,6 +14,7 @@ class MeshPrincipal:
         self.datosNodo = mn.CrearNodo(ip, mac.generate(), puerto)
         self.nodosConectados = mn.ListaNodos()
 
+
     #Funcion que crear un nodo nuevo con el ip y puerto del solicitante y una mac única
     def crear_nodo_registro(self, direccion_cliente):
         generador = MAC_generator.MACGenerator()
@@ -35,6 +36,7 @@ class MeshPrincipal:
         nodo_cliente = mn.CrearNodo(direccion_cliente[0], mac_cliente, int(direccion_cliente[1]))
         return nodo_cliente
 
+
     #Funcion que informa a toda la red del nuevo cliente
     def agregar_cliente(self, cliente, direccion):
         nodoCliente = self.crear_nodo_registro(direccion)
@@ -54,6 +56,7 @@ class MeshPrincipal:
         cliente.close()
         self.nodosConectados.agregar_nodo(nodoCliente)
         print("Agregado el nodo %s:%s" % (nodoCliente.get_ip(), str(nodoCliente.get_puerto())))
+
 
     #Funcion que desconecta al cliente de la red mesh
     def borrar_cliente(self, macNodo):
@@ -101,8 +104,8 @@ class MeshPrincipal:
                 hilo_borrar_registro.join()
 
 
-
-
-if __name__ == "__main__":
-    mesh = MeshPrincipal()
-    mesh.registro()
+#
+#
+# if __name__ == "__main__":
+#     mesh = MeshPrincipal()
+#     mesh.registro()

@@ -2,8 +2,8 @@ import socket
 from threading import Thread
 import random
 
-import manejo_nodos
-import paquete_mesh
+import red_mesh.manejo_nodos
+import red_mesh.paquete_mesh
 
 #Clase que representa cada cliente de la red mesh
 class NodoMesh:
