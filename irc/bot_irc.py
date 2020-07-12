@@ -1,4 +1,4 @@
-import utilidades_IRC as UIRC
+import irc.utilidades_IRC as UIRC
 from threading import Thread
 import argparse
 
@@ -50,10 +50,10 @@ class BotIRC:
         hilo_buzon.join()
         hilo_usuario.join()
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Ingresos de datos para el IRC')
-    parser.add_argument('nick', help='El Nick user del IRC')
-    parser.add_argument('realName', help='El nombre real para el uso del IRC')
-    args = parser.parse_args()
-    bot = BotIRC(args.nick, args.realName)
-    bot.activar()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description='Ingresos de datos para el IRC')
+#     parser.add_argument('nick', help='El Nick user del IRC')
+#     parser.add_argument('realName', help='El nombre real para el uso del IRC')
+#     args = parser.parse_args()
+#     bot = BotIRC(args.nick, args.realName)
+#     bot.activar()

@@ -1,22 +1,21 @@
 #!/usr/bin/python
 
 from capa1.generador_trama import crear_trama
-import sys
 import qrcode
-import time
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.image as mp_img
 import os
 
 from PIL import Image
-from bitstring import BitArray
-from matplotlib.pyplot import imshow
 
+"""
+Dispositivo para generar los códigos QR a partir de un archivo o de un mensaje en forma de string
+"""
 class DispositivoDeTransmision:
 
     def __init__(self):
         pass
+
 
     # recibe ints
     def file_a_qr(self, version, mac, filename):
@@ -52,7 +51,6 @@ class DispositivoDeTransmision:
 
     def crear_qr(self, tramas):
         for i in range(len(tramas)):
-            # print(sys.getsizeof(tramas[i]))
             qr = qrcode.QRCode(
                 version=1,
                 box_size=15,

@@ -1,20 +1,29 @@
 #!/usr/bin/python
 
 import cv2
-import numpy as np
 import pyzbar.pyzbar as pyzbar
 import time
 import glob
 from capa1.generador_trama import calcular_checksum
+from util.textos import *
 
-
+"""
+Dispotivo para la lectura de un archivo o un mensaje a través de una serie de imágenes de tipo .png
+o bien a través de la cámara web de la computadora
+"""
 class DispositivoLuzAdaptador:
 
     DIRECCION_MAQUINA = 0
 
     def __init__(self, direccion):
         self.DIRECCION_MAQUINA = direccion
+        self.textos = Textos()
+        self.mostrar_direccion()
 
+    """
+    Lee los archivos .png a partir de una ruta a un directorio
+    @param:path ruta al directorio donde se encuentran las imagenes
+    """
     def leer_imagenes(self, path):
         lectura_limpia = True
         checksum_correcto = True
@@ -28,7 +37,7 @@ class DispositivoLuzAdaptador:
             images = [cv2.imread(file) for file in sorted(glob.glob(path))]   # lee todas las imagenes del path especificado
 
         except OSError:
-            print("Error leyendo imagenes del path especificado")
+            print(self.textos.ERROR_LECTURA_IMAGENES)
             return
 
         for img in images:
@@ -43,32 +52,36 @@ class DispositivoLuzAdaptador:
             cont += 1
             checksum_correcto = checksum == calcular_checksum(payload)
             mensaje += payload
+            print(self.textos.QR_LEIDO)
 
         destino_correcto = self.verificar_direccion(datos["mac"])
 
         if not lectura_limpia:
-            print("La lectura de los QR no se dio en el orden adecuado")
+            print(self.textos.MALA_LECTURA)
+            time.sleep(2)
             return
 
         if not destino_correcto:
-            print("El mensaje no fue enviado a la dirección correta")
+            print(self.textos.DIRECCION_INCORRECTO)
+            time.sleep(2)
             return
 
         if not checksum_correcto:
-            print("Fallo en el cálculo del checksum")
+            print(self.textos.CHECKSUM_INCORRECTO)
+            time.sleep(2)
             return
 
         if tipo_de_mensaje == 1:
             self.crear_archivo(mensaje)
 
         elif tipo_de_mensaje == 2:
-            self.crear_archivo(mensaje)
-            # envia mensaje
-            pass
+            print(mensaje)
 
         return
 
-
+    """
+    Lee los QR a partir de luz interpretada por la cámara web de la computadora
+    """
     def leer_con_camara(self):
         lectura_limpia = True
         checksum_correcto = True
@@ -101,7 +114,7 @@ class DispositivoLuzAdaptador:
                 else:
                     leer = False
 
-                print(datos)
+                print(self.textos.QR_LEIDO)
                 time.sleep(3)
 
             cv2.imshow("Frame", frame)
@@ -113,15 +126,15 @@ class DispositivoLuzAdaptador:
         destino_correcto = self.verificar_direccion(datos["mac"])
 
         if not lectura_limpia:
-            print("La lectura de los QR no se dio en el orden adecuado")
+            print(self.textos.MALA_LECTURA)
             return
 
         if not destino_correcto:
-            print("El mensaje no fue enviado a la dirección correta")
+            print(self.textos.DIRECCION_INCORRECTO)
             return
 
         if not checksum_correcto:
-            print("Fallo en el cálculo del checksum")
+            print(self.textos.CHECKSUM_INCORRECTO)
             return
 
         if tipo_de_mensaje == 1:
@@ -131,7 +144,10 @@ class DispositivoLuzAdaptador:
 
         return
 
-
+    """
+    Interpreta cada arreglo de bytes de manera que se separen los datos contenidos en cada trama
+    @param:data_bytes arreglo de bytes que contiene la informacion de cada trama.
+    """
     def interpretar_data(self, data_bytes):
         data_string = data_bytes.decode()
         data_array = data_string.split("|")
@@ -143,22 +159,26 @@ class DispositivoLuzAdaptador:
                 }
         return data
 
-
+    """
+    Genera un archivo llamado tempfile donde se va a contener la informacion transmitida a través de archivos QR.
+    """
     def crear_archivo(self, datos):
         try:
-            nombre_archivo = "tempfile"
-
-            f = open(nombre_archivo, 'w+b')
-            # f.write(datos.encode())
+            f = open(self.textos.TEMP_FILE, 'w+b')
             f.write(bytes.fromhex(datos))
             f.close()
-            print("Archivo tempfile generado exitosamente")
+            print(self.textos.TEMPFILE_GENERADO)
 
         except OSError:
-            print("El archivo tempfile no pudo ser generado exitosamente")
+            print(self.textos.TEMPFILE_NO_GENERADO)
 
         return
 
-
     def verificar_direccion(self, direccion):
         return direccion == self.DIRECCION_MAQUINA
+
+    def mostrar_direccion(self):
+        print(self.textos.DIRECCION_MAQUINA)
+        print(str(self.DIRECCION_MAQUINA) + "\n")
+        time.sleep(2)
+        return

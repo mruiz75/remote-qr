@@ -2,27 +2,32 @@
 
 import sys
 
+"""
+Este archivo contiene los métodos necesarios para poder generar una trama de 128 bytes para la generación
+de un código QR.
+"""
+
+
+"""
+Método principal que le da la estructura a la creación de la trama
+"""
 def crear_trama(version, cont, mac, payload):
-    #trama = b''
     trama = ""
 
     header = armar_header(version, cont, mac)
     trama += header
-    len_header = sys.getsizeof(trama)
     trama, payload_restante = armar_payload(trama, payload)
-    #trama += payload_usado
-    #print(sys.getsizeof(trama))
-    print(trama)
+
     return trama, payload_restante
 
 
+"""
+Método que le da la estructura la header concatenando los valores hexadecimales de los parámetros separados
+por un '|' 
+"""
 def armar_header(version, cont, mac):
-    #header = b''
     header = ""
 
-    # version_b = (version + "|").encode('utf-8')
-    # cont_b = (cont + "|").encode('utf-8')
-    # mac_b = (mac +"|").encode('utf-8')
     version_hex = hex(version)[2:]
     cont_hex = hex(cont)[2:]
     mac_hex = hex(mac)[2:]
@@ -34,35 +39,38 @@ def armar_header(version, cont, mac):
     return header
 
 
+"""
+Método que calcula el checksum de cada trama, retornando su valor numérico (int)
+@param:payload un string conteniendo todo el payload restante
+"""
 def calcular_checksum(payload):
-    #payload = payload.decode()
     divisor = 24
     sum = 0
 
     for i in payload:
         sum += ord(i)
-        #sum += i
 
     checksum = sum % divisor
-    #return str(checksum)
     return checksum
 
 
+"""
+Método que arma el payload concatenando el checksum con el payload utilizado. 
+Retorna la trama lista y el payload restante
+@param:trama string con la trama incompleta
+@param:payload string de valores hexadecimales con la información por transmitir
+"""
 def armar_payload(trama, payload):
     payload_procesado = ""
 
     while(sys.getsizeof(trama) < 125 and len(payload) > 0):
-        #trama += bytes([payload[0]])
         trama += payload[0]
-        # payload_procesado += bytes([payload[0]])
         payload_procesado += payload[0]
         payload = payload[1:]
 
-    #trama += "|".encode()
     trama += "|"
 
     checksum = calcular_checksum(payload_procesado)
-    #trama += (checksum).encode('utf-8')
     trama += hex(checksum)[2:]
 
     return trama, payload

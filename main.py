@@ -1,57 +1,48 @@
 #!/usr/bin/python
 
-import capa1.generador_trama
-import time
-import os
-import tkinter as tk
+import sys
 
-from tkinter import filedialog
-from util.textos import *
 from capa1.dispositivo_de_transmision import *
 from capa1.dispositivo_luz_adaptador import *
+from irc.bot_irc import *
+from red_mesh.nodo_mesh import *
+from red_mesh.MAC_generator import *
 
 texto = Textos()
 
+
+"""
+Método principal que le da estructura al programa
+"""
 def main():
     mensaje_bienvenida()
 
-    while True:
-        opcion = menu()
+    try:
+        while True:
+            opcion = menu()
 
-        if opcion == 1:
-            qr_sender()
+            if opcion == 1:
+                qr_sender()
 
-        elif opcion == 2:
-            qr_receiver()
+            elif opcion == 2:
+                qr_receiver()
 
-        elif opcion == 3:
-            red_mesh()
+            elif opcion == 3:
+                red_mesh()
 
-        elif opcion == 4:
-            irc()
+            elif opcion == 4:
+                irc()
 
-        elif opcion == 0:
-            break
+            elif opcion == 0:
+                break
+
+    except KeyboardInterrupt:
+        salir()
+
 
     salir()
 
-
-
-
-    version = 1
-    mac = 12354356
-    filename1 = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/capa1/texto1.txt"
-    filename2 = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/capa1/prueba.pdf"
-    filename3 = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/capa1/img.png"
-    filename4 = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/capa1/img2.png"
-    filename5 = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/capa1/prueba.txt"
-    path = "/Users/Manuel/Documents/TEC/2020/Redes/Proyectos/remote-qr/tempfolder"
-    #texto_a_qr(version, ip, mac, filename1)
-    #file_a_qr(version, mac, filename5)
-    #--------
-    #leer_imagenes(path)
-    #leer_imagen()
-    #leer_con_camara()
+    return
 
 
 def mensaje_bienvenida():
@@ -86,6 +77,9 @@ def menu():
         menu()
 
 
+"""
+Método encargado de obtener los parámetros necesarios para transmitir un mensaje o un archivo
+"""
 def qr_sender():
     print(texto.QR_SENDER)
     try:
@@ -99,19 +93,33 @@ def qr_sender():
         direccion = int(input(texto.DIRECCION))
         mensaje = input(texto.ENVIAR_MENSAJE).encode().hex()
 
-        texto_a_qr(version=1,
+        ddt = DispositivoDeTransmision()
+
+        ddt.texto_a_qr(version=1,
                    mac=direccion,
                    texto_hex=mensaje)
+
+        print(texto.QR_GENERADOS)
+        time.sleep(2)
 
         return
 
     elif respuesta == 2:
-        direccion = int(input(texto.DIRECCION))
-        archivo = input(texto.PATH)
+        try:
+            direccion = int(input(texto.DIRECCION))
+            archivo = input(texto.PATH)
 
-        file_a_qr(version=2,
+        except ValueError:
+            print(texto.RESPUESTA_INVALIDA)
+
+        ddt = DispositivoDeTransmision()
+
+        ddt.file_a_qr(version=2,
                   mac=direccion,
                   filename=archivo)
+
+        print(texto.QR_GENERADOS)
+        time.sleep(2)
 
         return
 
@@ -123,8 +131,14 @@ def qr_sender():
         qr_sender()
 
 
+"""
+Método encargado de obtener la información necesaria para interpretar los códigos QR
+"""
 def qr_receiver():
     print(texto.QR_RECEIVER)
+    mg = MACGenerator()
+    direccion = int(mg.generate())
+
     try:
         respuesta = int(input(texto.R))
 
@@ -135,14 +149,18 @@ def qr_receiver():
     if respuesta == 1:
         print(texto.LECTURA_CAMARA)
 
-        leer_con_camara()
+        dla = DispositivoLuzAdaptador(direccion)
+
+        dla.leer_con_camara()
 
         return
 
     elif respuesta == 2:
         path = input(texto.PATH)
 
-        leer_imagenes(path)
+        dla = DispositivoLuzAdaptador(direccion)
+
+        dla.leer_imagenes(path)
 
         return
 
@@ -154,14 +172,39 @@ def qr_receiver():
         qr_sender()
 
 
+"""
+Método que establece la conexión a la red mesh
+"""
 def red_mesh():
-    pass
+    try:
+        cliente = NodoMesh('127.0.0.1', 1505)
+        cliente.main()
+
+    except ConnectionRefusedError:
+        print(texto.ERROR_CONEXION)
+        time.sleep(2)
+
+    return
 
 
+"""
+Método que obtiene los parámetros necesarios para establecer la conexión con le servidor IRC
+"""
 def irc():
-    pass
+    print(texto.IRC)
+
+    nick = input(texto.NICK)
+    real_name = input(texto.REAL_NAME)
+
+    bot = BotIRC(nick, real_name)
+    bot.activar()
+
+    return
 
 
+"""
+Método para acabar con la ejecución del programa
+"""
 def salir():
     print(texto.SALIR)
     for i in range(3):
