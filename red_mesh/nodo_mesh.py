@@ -2,8 +2,8 @@ import socket
 from threading import Thread
 import random
 
-import red_mesh.manejo_nodos
-import red_mesh.paquete_mesh
+from red_mesh.manejo_nodos import *
+from red_mesh.paquete_mesh import *
 
 #Clase que representa cada cliente de la red mesh
 class NodoMesh:
@@ -35,9 +35,9 @@ class NodoMesh:
 
     #Funcion que guarda todos los datos propios dentro de la red mesh
     def guardar_registro(self, datosNodo, datosRegistro, listaVecinos):
-        nodoDatos = manejo_nodos.CrearNodo(datosNodo[0], datosNodo[1], int(datosNodo[2]))
-        nodoRegistro = manejo_nodos.CrearNodo(datosRegistro[0], datosRegistro[1], int(datosRegistro[2]))
-        vecinos = manejo_nodos.ListaNodos()
+        nodoDatos = CrearNodo(datosNodo[0], datosNodo[1], int(datosNodo[2]))
+        nodoRegistro = CrearNodo(datosRegistro[0], datosRegistro[1], int(datosRegistro[2]))
+        vecinos = ListaNodos()
         vecinos.to_list(listaVecinos)
         return nodoDatos, nodoRegistro, vecinos
 
@@ -81,7 +81,7 @@ class NodoMesh:
 
     #Funcion que agrega algun cliente que se acabe de conectar a la red
     def agregar_vecino(self, datosVecino):
-        nodoVecino = manejo_nodos.CrearNodo(datosVecino[0], datosVecino[1], int(datosVecino[2]))
+        nodoVecino = CrearNodo(datosVecino[0], datosVecino[1], int(datosVecino[2]))
         self.listaVecinos.agregar_nodo(nodoVecino)
 
     #Funcion que reenvia el paquete quitandole quien lo envio
@@ -125,12 +125,12 @@ class NodoMesh:
         nodos = len(ruta) - 1
 
         vecino = self.listaVecinos.get_lista()[ruta[nodos]]
-        paquete = paquete_mesh.Paquete(vecino.get_ip(), vecino.get_puerto(), mensaje)
+        paquete = Paquete(vecino.get_ip(), vecino.get_puerto(), mensaje)
         nodos -= 1
 
         while nodos > -1:
             vecino = self.listaVecinos.get_lista()[ruta[nodos]]
-            paquete = paquete_mesh.Paquete(vecino.get_ip(), vecino.get_puerto(), paquete)
+            paquete = Paquete(vecino.get_ip(), vecino.get_puerto(), paquete)
             nodos -= 1
 
         return paquete
@@ -146,7 +146,7 @@ class NodoMesh:
         elif len(self.listaVecinos.get_lista()) == 1 and \
                 self.listaVecinos.get_lista()[0].get_mac() == macDestino:
             vecino = self.listaVecinos.get_lista()[0]
-            paquete = paquete_mesh.Paquete(vecino.get_ip(), vecino.get_puerto(), mensaje)
+            paquete = Paquete(vecino.get_ip(), vecino.get_puerto(), mensaje)
             paquete = paquete.to_string()
         else:
             ruta = self.generar_ruta_aleatoria(macDestino)

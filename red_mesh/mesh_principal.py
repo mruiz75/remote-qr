@@ -104,8 +104,6 @@ class MeshPrincipal:
                 hilo_borrar_registro.join()
 
 
-#
-#
-# if __name__ == "__main__":
-#     mesh = MeshPrincipal()
-#     mesh.registro()
+
+mesh = MeshPrincipal()
+mesh.registro()
