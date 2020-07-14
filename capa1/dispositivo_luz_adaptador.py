@@ -174,9 +174,15 @@ class DispositivoLuzAdaptador:
 
         return
 
+    """
+    Verifica que la direccion del nodo donde es transmitido el paquete sea el mismo de la maquina actual
+    """
     def verificar_direccion(self, direccion):
         return direccion == self.DIRECCION_MAQUINA
 
+    """
+    Muentra en pantalla la direccion asignada a la computadora actual
+    """
     def mostrar_direccion(self):
         print(self.textos.DIRECCION_MAQUINA)
         print(str(self.DIRECCION_MAQUINA) + "\n")

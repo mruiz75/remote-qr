@@ -1,0 +1,81 @@
+Instituto Tecnologico de Costa Rica 						M. Ruiz
+Escuela de Ingenieria en Computación						K. Segura
+
+
+
+
+
+
+					Protocolo RMT-QR
+
+-- Estatus del Documento --
+
+	Este documento especifica el protocolo para la transmision de informacion a traves de luz en forma de codigos QR. Ademas, ahonda en el establecimiento de un servicio de chat a traves de una red mesh y un servicio de chat a traves de una conexion a un servidor IRC. Publicado el 13 de julio del 2020 a las 8:00 pm (GMT-6).
+
+
+-- Version --
+
+1.0
+
+
+-- Introducción -- 
+
+	RMT-QR es un protocolo de capa de aplicacion que considera tres implementaciones distintas. Estas implementaciones se distribuyen entre la capa física, capa de enlace, capa de red y capa de aplicacion de acuerdo al modelo de referencia OSI. El protocolo fue desarrollado con el objetivo de poder establecer comunicación entre nodos a traves de una red mesh, un servidor IRC y ademas utilizando la luz como un medio de transmision.
+
+	Para el uso de la luz, se toma como base los Quick Response codes (QR codes) de acuerdo al estandar internacional ISO/IEC18004. Los códigos QR son utilizados para almacenar informacion que es compartida a traves de la reproducción de uno de estos codigos en formato .png. 
+
+
+-- Componentes -- 
+
+ * Dispositivo de Transmision
+	Este dispositivo se encarga de tomar un mensaje o un documento y convertirlo en una serie de codigos QR para finalmente ser transmitidos a traves de la pantalla. Para lograr esto, cada paquete de informacion (i. e. mensaje o archivo) sera convertido a un arreglo de bytes en formato hexadecimal. El formato hexadecimal fue escogido para evitar choque en la interpretacion de arreglos de bytes, entre los simbolos utilizados para su representacion y los simbolos pertenecientes al contenido.
+
+	Cada arreglo de bytes es dividido en tramas de un maximo de 128 bytes. Cada trama se compone de un header (encabezado) y el payload (una seccion del paquete). Ademas, se adjunta al final el resultado del chucksum del calculo del checksum para el extracto de paquete incluido en la trama.
+
+	1. Header: el header esta compuesto de tres elementos de la siguiente manera <version>|<id>|<direccion>  
+		a) version: numero entero. Indica si el paquete transmitido es un mensaje o un archivo. 
+		b) id: numero entero. Identificador utilizado para la lectura en orden de las tramas.
+		c) direccion: numero entero. Compuesto de 10 digitos distintos que representan la dirección del nodo a donde se desea enviar el paquete.
+
+	2. Payload: contiene un extracto del paquete que se desea enviar en un arreglo de bytes representado de manera hexadecimal. El tamano del payload es dependiente del tamano del tamano del header porque lo que este espacio es llenado progresivamente hasta que la trama ocupe un espacio de cerca de 125 bytes.
+
+	3. Checksum: numero entero que ocupa el ultimo espacio de la trama. Este valor es unico para cada trama y es calculado sumando el valor de cada uno de los bytes del arreglo que compone el payload y finalmente obteniendo el la parte entera del modulo de la suma con 24. El checksum es utilizado para verificar si la información que llegó es correcta y si el payload dentro del QR no fue alterado durante la transimision, lectura e interpretacion.
+
+Trama completa: <header>|<payload>|<checksum>
+
+	La transmision de cualquier tipo de paquetes hace que el cliente genere un directorio donde se almacenen todos los codigos QR correspondientes al paquete. El formato de nombre de estos codigos qr es: qr<ceros><id>.png donde <ceros> es una cantidad dinamica de ceros que depende de la cantidad de digitos que conformen el id. En este caso, usamos un maximo de 10 digitos entre ceros y los digitos del id. 
+
+
+
+ * Dispositivo Luz Adaptador
+	Este dispositivo se encarga de la lectura de los códigos QR. Esta lectura puede realizarse de dos maneras distintas: a través de la cámara o lectura de archivos .png. 
+	
+	1. Lectura con cámara: el dispositivo generara una direccion para iniciar y se conectará a la cámara web de la computadora y en pantalla se mostrará la imagen de la misma. Para la interpretación de los códigos QR, basta con acercar la imagen a la camara y esta la leera. El cliente estará inactivo por 3 segundos mientras el usuario cambia a otro código. Una vez que el lector reconozca el ultimo codigo, se cerrará e interpretará la información para ver si transimitir el mensaje imprimiendolo en pantalla o bien creando un archivo. 		
+	
+	2. Lectura de archivos .png: para activar el lector de archivos, el sistema generara una direccion numerica propia para el cliente. Despues, se debe indicar la ruta exacta del directorio donde se encuentran los archivos por interpretar. Estos archivos se ordenaran y leeran de forma numerica y finalmente cada uno de ellos es procesado para obtener la información pertinente y generar el paquete de informacion original. Al igual que en el punto uno, este paquete sera procesado como un mensaje o como un archivo de acuerdo a los datos mostrados en el header. 
+		
+
+ * Red Mesh
+	Para hacer uso de este cliente, es necesario que un servidor mesh este en ejecucion. El servidor mesh cumple la funcion de establecer un foco central donde todo usuario puede inscribirse. Al ser anonimo, el servidor actua como una puerta para entrar o salir del chat. Una vez dentro del chat, el servidor no tiene conocimiento de lo que sucede dentro de la red.
+	
+	Cada nodo que se conecte a la red, actua como servidor y como cliente. El cliente simultaneamente sabe todo lo que hay en la red, pero no tiene conocimiento de lo que esta suciendo. Cada nodo tiene una lista de todos los nodos vecinos almacenados como una lista de la forma: [[ip1, direccion1, puerto1], [ip2, direccion2, puerto2], ..., [ipN, direccionN, puertoN]]. Un nodo emisor es el encargado de generar la ruta completa para la transmision del mensaje enviado. Cada siguiente conoce unicamente el nodo al cual enviarlo, pero no tiene conocimiento de donde lo recibio, ni el destino final. La idea detras de esta es no centralizar todo el paso de informacion en un servidor, sino que la red este distribuida entre todos los nodos para cumplir con la idea de las redes MESH de distribuir fuerza de la red entre los nodos y mantener el anonimato.
+
+	Para enviar un mensaje, se sigue el siguiente formato: 'Para <direccion final> <mensaje>' donde direccion final se compone de un numero entero de 10 digitos. Una vez enviado el mensaje, al nodo con la direccion indicada, le aparecera el mensaje en pantalla.
+
+
+ * IRC
+	IRC es un bot que genera un usuario para un chat mediante un servidor IRC. El servidor utilizado es agility.nl.eu.dal.net . Antes de establecer la conexion, se le solicita al usuario un nick y un nombre real para usar dentro del chat. Una vez conectado al servidor, el cliente permite enviar mensajes y estos se haran llegar a todos los demas usuarios que esten conectados al mismo chat. 
+
+	Usuario conectado al chat podra ver donde se agrega un mensaje nuevo en tiempo real cuando algun otro usuario en el mismo chat envia un mensaje. Este mensaje aparecera como una nueva entrada en la consola utiilzada
+
+	Una vez finalizada la conversacion, para salir, solo hace falta digitar salir + ENTER y el usuario saldra del chat. Para finalizar la ejecucion, es necesario usar el comando CTRL + Z. 
+
+
+-- Cliente --
+
+	Se tiene un cliente para la manipulación y centralizacion de los servicios. El cliente es un archivo binario llamado remote-qr y puede ser corrido desde una terminal de comandos, en el directorio donde esté almacenado el archivo binario, de la siguiente manera; ./remote-qr
+	
+	Una vez iniciado el programa, las instrucciones para su manipulación se representaran en pantalla. Durante la ejecución del menú principal y las opciones 1 y 2, se puede ingresar 0 como mecanismo para salir o bien volver al menú principal.
+
+	
+

@@ -11,10 +11,10 @@ de un código QR.
 """
 Método principal que le da la estructura a la creación de la trama
 """
-def crear_trama(version, cont, mac, payload):
+def crear_trama(version, cont, direccion, payload):
     trama = ""
 
-    header = armar_header(version, cont, mac)
+    header = armar_header(version, cont, direccion)
     trama += header
     trama, payload_restante = armar_payload(trama, payload)
 
@@ -25,16 +25,16 @@ def crear_trama(version, cont, mac, payload):
 Método que le da la estructura la header concatenando los valores hexadecimales de los parámetros separados
 por un '|' 
 """
-def armar_header(version, cont, mac):
+def armar_header(version, cont, direccion):
     header = ""
 
     version_hex = hex(version)[2:]
     cont_hex = hex(cont)[2:]
-    mac_hex = hex(mac)[2:]
+    direccion_hex = hex(direccion)[2:]
 
     header += version_hex + "|"
     header += cont_hex + "|"
-    header += mac_hex + "|"
+    header += direccion_hex + "|"
 
     return header
 

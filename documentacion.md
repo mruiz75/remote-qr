@@ -85,15 +85,32 @@ profesor
 
 1. remote-QR:
     * Dispositivo de Transmisión: el dispositivo de transmisión se encarga de tomar un mensaje o un archivo indicado y transmitirlo a otro punto a través de códigos QR. Para esto, se genera un encabezado de trama (levemente) dinámico y se toma una parte del mensaje o bien del archivo convertido a arreglo de hexadecimales, se junta con el encabezado y luego se genera un código QR (en formato .png) y además se representa la imagen en pantalla.
+        - file_a_qr(): abre un archivo como un arreglo de bytes en formato hexadecimal y hace el llamado a texto_a_qr para procesar la información
+        - texto_a_qr(): toma la version, direccion y el payload en formato hexadecimal y genera multiples tramas que luego son convertidas en códigos QR.
+        - crear_qr(): toma la trama en formato de texto string y lo convierte en un código qr dando como resultado un archivo de tipo .png
+        - generar_nombre_archivo(): genera el nombre del archivo donde se almacenará el código qr
+
     * Dispositivo Luz Adaptador: El dispositivo luz adaptador, tiene dos funcionameintos distintos. El principal es el original y el secundario fue generado para testeo. Por un lado, el funcionamiento principal consiste en utilizar la cámara web de la computadora para poder leer códigos QR mostrados a través del medio que fuera necesario. El segundo funcionamiento se da cuando se desea probar un archivo de gran tamaño para el que se tienen todos los códigos QR ya generados. En este caso, se toma el directorio con los archivos, se ordenan alfabéticamente y se ingresa en un ciclo que va extrayendo la información y generando un archivo o un mensaje a partir de eso.
+        - leer_imagenes(): Lee los archivos .png a partir de una ruta a un directorio
+        - leer_con_camara(): Lee los QR a partir de luz interpretada por la cámara web de la computadora
+        - interpretar_data(): Interpreta cada arreglo de bytes de manera que se separen los datos contenidos en cada trama
+        - crear_archivo(): Genera un archivo llamado tempfile donde se va a contener la informacion transmitida a través de archivos QR.
+        - verificar_direccion(): Verifica que la direccion del nodo donde es transmitido el paquete sea el mismo de la maquina actual   
+        - mostrar_direccion(): Muentra en pantalla la direccion asignada a la computadora actual
+
+    * Generador Trama: clase con metodos que sirven como ayuda para la creacion de una trama a partir del payload. Sus métodos ayudan en la construcción de una trama en formato de string que luego será utilizado para crear el código qr.
+        - crear_trama(): Método que le da la estructura a la creación de la trama
+        - armar_header(): Método que le da la estructura la header concatenando los valores hexadecimales de los parámetros separados por un '|'
+        - calcular_checksum(): Método que calcula el checksum de cada trama, retornando su valor numérico (int)
+        - armar_payload(): Método que arma el payload concatenando el checksum con el payload utilizado. Retorna la trama lista y el payload restante
 
     En ambos mecanismos, para cada trama que se lee, se obtiene una serie de datos como la versión del protocolo utilizado, el checksum y el id del código QR. Estas propiedades son utilizadas para asegurarse de que la lectura haya sido realizada en el lugar adecuado, que cada trama llegue completa y se lea en el orden que es debido.
 
-2. Red Mesh: 
+2. Red Mesh:
    * Entre las estructuras creadas por nosotros tenemos:
       - Paquete Mesh: Que contiene la clase "Paquete", estructura que vendría siendo el paquete que se envia a traves de la red mesh, cuenta con los campos: los datos del destino siguiente y el mensaje. Donde el mensaje puede ser otro paquete, representando así el sistema de "carta dentro de otra carta" del sistema anonimo ejemplificado en clase.  
       - Manejo nodos: Que cuenta con dos clases, "CrearNodo" que representa a cada cliente y almacenas los datos del mismo(ip, puerto y un número de identificación único), y "ListaNodos" que almacenas a todos los clientes disponibles y administra esta lista.
-   * Mesch principal: Funciona como un servidor de registros a la red mesh, se encarga se agregar a los que clientes nuevos y habilitar el envio de mensajes a este nuevo cliente desde el resto de clientes.  Sus funciones principales son: 
+   * Mesch principal: Funciona como un servidor de registros a la red mesh, se encarga se agregar a los que clientes nuevos y habilitar el envio de mensajes a este nuevo cliente desde el resto de clientes.  Sus funciones principales son:
       - crear_nodo_registro(): Que genera todos los datos requeridos para que el cliente se integre a la red, y los almacena en la estructura de datos "CrearNodo".
       - agregar_cliente: función Que agrega el nuevo cliente a la mesh.
       - registro: Función que esta constantemente a la escucha de la solicitud de ingreso o salida de un cliente.
@@ -102,9 +119,9 @@ profesor
       - reenviar_paquete(): Si el mensaje recibido no es para el cliente, o se desea mandar un mensaje propio, esta función se encarga de quitar una capa del paquete(de ser requerido) y reenviarlo a su siguiente destino.
       - crear_ruta(): cuenta con varias funciones auxiliares, y en conjunto con estas, genera una ruta aleatoria para llegar al destino y generar el paquete que se enviará por esta ruta.
       - enviar_mensaje(): Función que actua como terminal del usuario, esta constantemente esperando que el cliente escriba, y reacionar de acuerdo a la solicitud del cliente.
-   
-3. IRC: 
-   * Utilidades IRC: Contiene la clase "IRC", clase que se encarga de las posibles acciones en la comunicación con el servido IRC, acciones representadas con las funciones: 
+
+3. IRC:
+   * Utilidades IRC: Contiene la clase "IRC", clase que se encarga de las posibles acciones en la comunicación con el servido IRC, acciones representadas con las funciones:
       - conexion_servidor(): Conecta con el servidor solicitado.
       - enviar(): Enviar un mensaje.
       - respuesta(): Obtener los mensajes recibidos del servidor.
@@ -120,18 +137,19 @@ Si en algún momento es necesario salir del programa de manera forzada, puede es
 
 ## Actividades realizadas por el estudiante
 ### Manuel Ruiz
-* Creación de repositorio: generar un repositorio en la plataforma Github para el manejo de versiones del programa. El siguiente es el link al repositorio utilizado. https://github.com/mruiz75/MailServer.git
+* Fecha 8 de junio. Duración: menos de una hora. Actividad: Creación de repositorio. Generar un repositorio en la plataforma Github para el manejo de versiones del programa. El siguiente es el link al repositorio utilizado. https://github.com/mruiz75/remote-qr
 * Capa 1:
-    * Investigación: investigación en internet sobre código QR, procesamiento de códigos QR, bibliotecas de Python para le manejo de códigos QR.
-    * Creación del protocolo: análisis de elementos indispensables para el funcionamiento de la red como fue solicitada. El protocolo hace uso de tramas de 128 bytes compuestas por un header y le payload. Ambas partes tienen un tamaño dinámico dependiendo del tamaño de las propiedades agregadas al header.
-    * Dispositivo de Transmisión: generación de un dispositivo que se encarga de convertir un mensaje o un archivo a una serie de códigos QR
-    * Dispositivo Luz Adaptador: generación de un dispositov que se encarga de convertir una serie de imágenes de tipo 1 .png conteniendo los códigos QR en un mensaje o un archivo final.
-* Menú principal: Desarrollo del menú principal del programa para facilitar la interacción con las distintas partes del proyecto. Testeo del funcionamiento de cada una de las partes y corrección de errores.
-* RFC: creación del RFC que contiene la información detallada sobre el protocolo utilizado.
+    * Fecha 20 de junio. Duración: 3 horas. Investigación. Investigación en internet sobre código QR, procesamiento de códigos QR, bibliotecas de Python para le manejo de códigos QR.
+    * Fecha 22 de junio - 2 de julio: Duración 10 horas. Creación del protocolo: análisis de elementos indispensables para el funcionamiento de la red como fue solicitada. El protocolo hace uso de tramas de 128 bytes compuestas por un header y le payload. Ambas partes tienen un tamaño dinámico dependiendo del tamaño de las propiedades agregadas al header.
+    * Fecha 30 de junio - 10 de julio: Duración: 8 horas: Dispositivo de Transmisión. Generación de un dispositivo que se encarga de convertir un mensaje o un archivo a una serie de códigos QR
+    * Fecha 30 de junio - 10 de julio: Duración 8 horas: Dispositivo Luz Adaptador. Generación de un dispositov que se encarga de convertir una serie de imágenes de tipo 1 .png conteniendo los códigos QR en un mensaje o un archivo final.
+* Fecha 11 de julio. Duración 5 horas. Actividad: Menú principal. Desarrollo del menú principal del programa para facilitar la interacción con las distintas partes del proyecto. Testeo del funcionamiento de cada una de las partes y corrección de errores.
+* Fecha 13 de julio. Duración 2 horas. Actividad: RFC: creación del RFC que contiene la información detallada sobre el protocolo utilizado.
+* Horas totales trabajadas: 36 horas
 
 ### Kevin Segura
-* Fecha: 22 de Junio. 
-  Duración: 3 horas. 
+* Fecha: 22 de Junio.
+  Duración: 3 horas.
   Actividad: Investigación básica sobre redes, sockets, puertos, redes mesh y como hacer uso de estos elementos en Python3. Además se creo una pequeña funsión que genera los identificadores únicos requeridos en ciertas partes del proyecto.
 * Fecha: Del 24 al 28 de Junio.
   Duración: 8 horas.
@@ -152,7 +170,7 @@ Si en algún momento es necesario salir del programa de manera forzada, puede es
   Duración: 1 hora.
   Actividad: Aporte en la documentación y RFC.
 * Horas totales trabajadas: 22 horas.
-  
+
 ### Ambos (Reuniones)
 * Fecha: 20 de Junio.
   Duración: 2 horas.
@@ -179,7 +197,7 @@ Más allá de la idea de redes, este proyecto planteó un reto fuerte para los e
 El proyecto está planteado de manera escalable y se planea liberar el código por si alguien en algún momento desea mejorarlo o aportar a su desarrollo.
 
 ### Kevin Segura
-El proyecto me parecio muy interesante y educativo, esto porque se exploro como hacer redes de forma diferentes a la vez que dejamos nuestra marca personal en estas. Con esta experiencia se pudo vivir más de cerca cómo es que una red se comunica, que si bien no es la misma que se usa a nivel mundial, sí ayuda a dar un mejor entendimiento de esta. 
+El proyecto me parecio muy interesante y educativo, esto porque se exploro como hacer redes de forma diferentes a la vez que dejamos nuestra marca personal en estas. Con esta experiencia se pudo vivir más de cerca cómo es que una red se comunica, que si bien no es la misma que se usa a nivel mundial, sí ayuda a dar un mejor entendimiento de esta.
 
 En cuestion del estado del proyecto, estoy complacido porque se logro en gran medida completar lo que se solicito. Mientras que cuestión de problemas y limitaciones se junto el que yo no he llevado sistemas operativos, por lo que cosas que podrían parecer obvias como sockets y puertos no tenía ni la más mínima noción de qué eran, por lo que tuve que redoblar esfuerzos en esa parte para al menos tener un entendimiento antes de empezar a programar. Otro problema que surgió fue que se tuvo hacer un estudio profundo de los comando que utilizan los IRC públicos por definición, pero por dicha este no fue mayor inconveniente al estar muy bien documentado.
 
@@ -204,4 +222,3 @@ Finalmente, se recomienda el involucramiento de cualquier persona interesada en 
 - Son Link.(2020). "[Python] Programar Un Bot Para IRC. [online] Desde Linux". Disponible en: https://blog.desdelinux.net/python-programar-un-bot-para-irc/
 - Galache.(2002). "Comando de IRC". Disponible en: https://www.geeknetic.es/Guia/7/Comandos-de-IRC.html
 - mIRC Co. (2020). "IRC Networks and Servers". Disponible en: https://www.mirc.com/servers.html
-
