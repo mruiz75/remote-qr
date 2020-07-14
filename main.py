@@ -158,7 +158,7 @@ def qr_receiver():
     elif respuesta == 2:
         path = input(texto.PATH)
 
-        dla = DispositivoLuzAdaptador(direccion)
+        dla = DispositivoLuzAdaptador(1234)
 
         dla.leer_imagenes(path)
 
