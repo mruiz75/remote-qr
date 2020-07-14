@@ -96,7 +96,7 @@ def qr_sender():
         ddt = DispositivoDeTransmision()
 
         ddt.texto_a_qr(version=1,
-                   mac=direccion,
+                   direccion=direccion,
                    texto_hex=mensaje)
 
         print(texto.QR_GENERADOS)
@@ -115,7 +115,7 @@ def qr_sender():
         ddt = DispositivoDeTransmision()
 
         ddt.file_a_qr(version=2,
-                  mac=direccion,
+                  direccion=direccion,
                   filename=archivo)
 
         print(texto.QR_GENERADOS)

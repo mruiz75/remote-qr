@@ -54,7 +54,7 @@ class DispositivoLuzAdaptador:
             mensaje += payload
             print(self.textos.QR_LEIDO)
 
-        destino_correcto = self.verificar_direccion(datos["mac"])
+        destino_correcto = self.verificar_direccion(datos["direccion"])
 
         if not lectura_limpia:
             print(self.textos.MALA_LECTURA)
@@ -123,7 +123,7 @@ class DispositivoLuzAdaptador:
             if key == 27:
                 break
 
-        destino_correcto = self.verificar_direccion(datos["mac"])
+        destino_correcto = self.verificar_direccion(datos["direccion"])
 
         if not lectura_limpia:
             print(self.textos.MALA_LECTURA)
@@ -153,7 +153,7 @@ class DispositivoLuzAdaptador:
         data_array = data_string.split("|")
         data = {"version": int(data_array[0], 16),
                 "id": int(data_array[1], 16),
-                "mac": int(data_array[2], 16),
+                "direccion": int(data_array[2], 16),
                 "payload": data_array[3],
                 "checksum": int(data_array[4], 16)
                 }
