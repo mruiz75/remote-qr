@@ -32,7 +32,7 @@ class DispositivoDeTransmision:
     """
     Metodo que toma la version, direccion y el payload en formato hexadecimal y genera multiples tramas que luego son convertidas en códigos QR.
     @param version:
-    @param mac:
+    @param direccion:
     @param texto_hex
     """
     def texto_a_qr(self, version, direccion, texto_hex):
