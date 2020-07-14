@@ -15,6 +15,7 @@ class DispositivoLuzAdaptador:
 
     DIRECCION_MAQUINA = 0
 
+
     def __init__(self, direccion):
         self.DIRECCION_MAQUINA = direccion
         self.textos = Textos()
@@ -45,7 +46,8 @@ class DispositivoLuzAdaptador:
             datos = self.interpretar_data(decoded_obs[0].data)
             payload = datos["payload"]
             qr_id = datos["id"]
-            tipo_de_mensaje = datos["version"]
+            if datos["version"] != 0:
+                tipo_de_mensaje = datos["version"]
             checksum = datos["checksum"]
 
             lectura_limpia = qr_id == cont
@@ -71,10 +73,10 @@ class DispositivoLuzAdaptador:
             time.sleep(2)
             return
 
-        if tipo_de_mensaje == 1:
+        if tipo_de_mensaje == 2:
             self.crear_archivo(mensaje)
 
-        elif tipo_de_mensaje == 2:
+        elif tipo_de_mensaje == 1:
             print(mensaje)
 
         return
@@ -97,7 +99,8 @@ class DispositivoLuzAdaptador:
             _, frame = cap.read()
 
             decoded_objects = pyzbar.decode(frame)
-            if decoded_objects:
+            print(decoded_objects)
+            if decoded_objects and decoded_objects[0].type == "QRCODE":
                 datos = self.interpretar_data(decoded_objects[0].data)
                 if datos["version"] != 0 and checksum_correcto:
                     payload = datos["payload"]
@@ -116,6 +119,9 @@ class DispositivoLuzAdaptador:
 
                 print(self.textos.QR_LEIDO)
                 time.sleep(3)
+
+            else:
+                pass
 
             cv2.imshow("Frame", frame)
             key = cv2.waitKey(1)
@@ -137,9 +143,9 @@ class DispositivoLuzAdaptador:
             print(self.textos.CHECKSUM_INCORRECTO)
             return
 
-        if tipo_de_mensaje == 1:
+        if tipo_de_mensaje == 2:
             self.crear_archivo(mensaje)
-        elif tipo_de_mensaje == 2:
+        elif tipo_de_mensaje == 1:
             print(mensaje)
 
         return
